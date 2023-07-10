@@ -1,0 +1,57 @@
+.section-1 {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+
+    h1, p {
+        margin-bottom: 25px;
+    }
+
+    .group-personal-dates {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        flex-wrap: wrap;
+        overflow: hidden;
+
+        .personal-dates {
+            width: 40%;
+            
+            .info {
+                height: 100px;
+                width: 100%;
+                
+                p {
+                    position: relative;
+                    left: 0;
+                    margin-bottom: 10px;
+                }
+                
+                span {
+                    position: absolute;
+                    left: 80px;
+                }
+            }
+        }
+
+        .my-interestin {
+            width: 60%;
+
+            h2 {
+                text-align: end;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .section-1 {
+        .group-personal-dates {
+            .my-interestin {
+                margin-top: 30px;
+            }
+        }
+    }
+}
