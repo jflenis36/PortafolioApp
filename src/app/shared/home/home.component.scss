@@ -2,14 +2,30 @@
     display: flex;
     flex-direction: column;
     text-align: justify;
+    max-width: 700%;
+
+    .show {
+        display: inline !important;
+        transition: 0.3s ease;
+    }
 
     h1, p {
         margin-bottom: 25px;
+
+        span.dos {
+            white-space: pre-line;
+        }
+    }
+
+    p.text-secondary {
+        span.uno, span.tres {
+            display: none;
+        }
     }
 
     .group-personal-dates {
         width: 100%;
-        display: flex;
+        display: flex !important;
         justify-content: space-between;
         align-items: start;
         flex-wrap: wrap;
@@ -30,28 +46,92 @@
                 
                 span {
                     position: absolute;
-                    left: 80px;
+                    left: 125px;
+                    top: -3px;
                 }
             }
         }
 
         .my-interestin {
             width: 60%;
-
+            max-width: 421px;
             h2 {
                 text-align: end;
             }
         }
     }
 
+    
+    .hidden {
+        display: none !important;
+        transition: 0.3s ease;
+    }
+
 }
 
-@media screen and (max-width: 768px) {
+.section-2 {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        margin-bottom: 20px;
+    }
+}
+
+.section-3 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.underline {
+    display: block !important;
+    font-size: 10px;
+    border-radius: 0;
+    white-space: nowrap;
+    border-right: 3px solid;
+    width: 110px;
+    animation: typing 3s steps(14), blink 0.5s infinite step-end alternate;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    50%{ border-color: transparent; }
+}
+
+@media screen and (max-width: 790px) {
     .section-1 {
         .group-personal-dates {
-            .my-interestin {
-                margin-top: 30px;
+            .personal-dates {
+                display: none;
             }
+            .my-interestin {
+                width: 100%;
+                margin-top: 30px;
+
+                h2 {
+                    text-align: start;
+                }
+            }
+        }
+    }
+
+    p.text-secondary {
+        transition: 0.3s ease;
+        span.dos, span.tres {
+            display: none;
+        }
+
+        span.uno {
+            display: inline;
+            transition: 0.3s ease;
         }
     }
 }

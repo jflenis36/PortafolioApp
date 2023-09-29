@@ -1,81 +1,65 @@
+
 <div class="scroll-content text-secondary">
     <div class="section section-1">
-        <h1 class="text-secondary">Acerca de mi</h1>
-        <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione animi at consequuntur
-            velit ipsum quae alias excepturi quisquam, similique harum perferendis atque! Soluta, reiciendis possimus
-            corrupti porro sint ipsum voluptatem!</p>
-        <div class="group-personal-dates">
+        <h1 class="text-secondary"> {{ json_text.section_1.title_1 }} </h1>
+        <p class="text-secondary"> {{ json_text.section_1.fixed_text }}  
+            <span class="dos {{!hidden_text?'hidden':'show'}}"> 
+                {{ json_text.section_1.hidden_text }} 
+            </span> 
+        </p>
+        <span class="uno underline  {{hidden_text?'hidden':'show'}}" (click)="hidden_text = !hidden_text"> {{ json_text.section_1.continue }}  </span> 
+        <span class="tres underline {{!hidden_text?'hidden':'show'}}" (click)="hidden_text = !hidden_text"> {{ json_text.section_1.hide }} </span>
+        <div class="group-personal-dates {{hidden_text?'hidden':'show'}}">
             <div class="personal-dates">
                 <h2>
-                    Info
+                    {{ json_text.section_1.group_dates.personal_dates.title }} 
                 </h2>
                 <div class="info">
-                    <p class="one">Cumple <span>24 de Junio</span></p>
-                    <p class="two">Email <span>jflenis36@gmail.com</span></p>
-                    <p class="three">Github <span>link</span></p>
-                    <p class="four">Jobi <span class="bg">Lorem</span></p>
+                    <p *ngFor="let info of json_text.section_1.group_dates.personal_dates.info" class="one"> {{ info.name }} <span [class]="info.class"> {{ info.value }} </span></p>
                 </div>
             </div>
             <div class="my-interestin">
                 <h2>
-                    Mis intereses
+                    {{ json_text.section_1.group_dates.interestin.title }} 
                 </h2>
-
                 <div class="card-icons">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-gamepad"></i>
-                        <!-- <p>Laravel</p> -->
-                        <span> Juegos </span>
-                    </div>
-                    <div class="card-icon">
-                        <i class="fa-brands fa-windows"></i>
-                        <!-- <p>Typescript</p> -->
-                        <span> Windows </span>
-                    </div>
-                    <div class="card-icon">
-                        <i class="fas fa-football-ball"></i>
-                        <!-- <p>Typescript</p> -->
-                        <span> Deporte </span>
-                    </div>
-                    <div class="card-icon">
-                        <i class="fas fa-music"></i>
-                        <!-- <p>Typescript</p> -->
-                        <span> Musica </span>
-                    </div>
-                    <div class="card-icon">
-                        <i class="fas fa-photo-video"></i>
-                        <!-- <p>Typescript</p> -->
-                        <span> Video </span>
-                    </div>
-                    <div class="card-icon">
-                        <i class="fas fa-motorcycle"></i>
-                        <!-- <p>Typescript</p> -->
-                        <span> Moto </span>
-                    </div>
-                    <div class="card-icon">
-                        <i class="fas fa-plane-departure"></i>
-                        <!-- <p>Typescript</p> -->
-                        <span> Viajes </span>
-                    </div>
-                    <div class="card-icon">
-                        <i class="fas fa-utensils"></i>
-                        <!-- <p>Typescript</p> -->
-                        <span> Typescript </span>
+                    <div *ngFor="let card of json_text.section_1.group_dates.interestin.cards" class="card-icon">
+                        <i [class]="card.icon"></i>
+                        <span> {{ card.text }} </span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="section text-secondary">
-        Contenido 2
+    <div class="section section-2 text-secondary">
+        <h2>{{json_text.section_2.title}}</h2>
+        <div class="cards">
+            <div *ngFor="let card of json_text.section_2.cards" class="card">
+                <i [class]="card.icon"></i>
+                <p> {{ card.text }} </p>
+            </div>
+        </div>
     </div>
-    <div class="section text-secondary">
-        Contenido 3
+    <div class="section section-3 text-secondary">
+        <h2> {{ json_text.section_3.title }} </h2>
+        <div class="cards-image">
+            <div *ngFor="let card of json_text.section_3.projects">
+                <a *ngIf="card.type == 'work'" [href]="card.link" target="_blank" class="card-image">
+                    <img src="{{card.img}}" alt="">
+                    <p class="text-secondary"> {{ card.text }} </p>    
+                </a>
+                <a *ngIf="card.type == 'mine'" [routerLink]="card.link" class="card-image">
+                    <img src="{{card.img}}" alt="">
+                    <p class="text-secondary"> {{ card.text }} </p>    
+                </a>
+            </div>
+        </div>
+        <button [routerLink]="json_text.section_3.button.link " class="btn-hover btn-shadown-purple"> {{ json_text.section_3.button.text }} </button>
     </div>
-    <div class="section">
+    <div class="section section_4">
         <div class="footer text-quaternary">
             <div class="logo">
-                Juan Felipe
+                {{ json_text.section_4.title }}
             </div>
             <div class="social-icons-container">
                 <a href="#" target="_blank"><i class="far fa-envelope social-icon"></i></a>
@@ -85,7 +69,7 @@
                 <a href="#" target="_blank"><i class="fab fa-github social-icon"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-whatsapp social-icon"></i></a>
             </div>
-            <span class="copyright">&copy;2023, Juan Felipe. Todos los derechos reservados.</span>
+            <span class="copyright"> {{ json_text.section_4.text }} </span>
         </div>
     </div>
 </div>

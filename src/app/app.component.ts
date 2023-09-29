@@ -22,7 +22,6 @@ export class AppComponent {
   }
   
   handleModeChange(event: CustomEvent<any>): void {
-    console.log('cambiamos modo a: ' + this.themeService.getCurrentMode());
     this.currentMode = this.themeService.getCurrentMode();
   }
 }

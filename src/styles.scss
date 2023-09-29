@@ -1,8 +1,6 @@
 $primary-light: white;
 $secondary-light: black;
-$fondo-light: #141c3a1f;
-$tertiary-light: #000000;
-$quaternary-light: #ffffff;
+
 
 $primary-dark: black;
 $secondary-dark: white;
@@ -25,7 +23,7 @@ $quaternary-extra: #ffffff;
     list-style: none !important;
     text-decoration: none !important;
     font-family: 'Martian Mono', monospace;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .scroll-content {
@@ -79,15 +77,24 @@ p {
 span {
     padding: 4px;
     border-radius: 5px;
+
+    &.underline {
+        text-decoration: underline !important;
+        cursor: pointer !important;
+    }
 }
 
 .navbar {
     position: fixed;
+    top:0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
+    max-width: 750px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 50px;
+    padding: 10px 0;
     .logo p {
         font-size: 2.1rem;
         font-weight: 600;
@@ -136,7 +143,7 @@ span {
 
                 a {
                     font-size: 0.8rem;
-                    transition: 0.8s ease;
+                    transition: 0.4s ease;
                 }
 
                 &.svg a svg  {
@@ -208,7 +215,7 @@ span {
             display: inline-block;
 
             i {
-                transition:  ease 0.35s;
+                transition:  ease 0.3s;
                 font-size: 1.9rem;
                 border: 1px solid;
                 padding: 10px;
@@ -231,8 +238,8 @@ span {
     flex-wrap: wrap;
     
     .card-icon {
-        padding: 10px;
-        width: 90px;
+        padding: 10px 0;
+        width: 80px;
         margin: 4px;
         border-radius: 4px;
         display: flex;
@@ -276,33 +283,167 @@ span {
     }
 }
 
+.cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 
+    .card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px;
+        width: 180px;
+        height: 50px;
+        padding: 40px 20px;
+        cursor: pointer;
+        // border: 1px solid wheat;
+        transition: ease .2s ;
 
+        i {
+            font-size: 2.6rem;
+        }
 
+        p {
+            font-size: 0.7rem;
+        }
+
+        &:hover {
+            transform: translateX(-10px);
+            transform: translateY(-4px);
+            p {
+                font-weight: 700;
+                font-size: .8rem;
+            }
+            
+            .fa-html5, .fa-html5 + p { color: #E96228 }
+            .fa-css3-alt, .fa-css3-alt + p { color: #0091D5 ;}
+            .fa-sass, .fa-sass + p { color: #C76494 ;}
+            .fa-js-square, .fa-js-square + p { color: #F7DF1E ;}
+            .fa-angular, .fa-angular + p { color: #DF002D ;}
+            .fa-git-alt, .fa-git-alt + p { color: #E84E31 ;}
+            .fa-php, .fa-php + p { color: #7476AD ;}
+            .fa-laravel, .fa-laravel + p { color: #F7291B ;}
+            
+            
+        }
+    }
+}
+
+.cards-image {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .card-image {
+        display: flex;
+        width: 220px;
+        margin: 6px;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 40px;
+
+        img {
+            width: 100%;
+        }
+        
+            &:hover {
+                transform: scale(1.1);
+                margin: 0 10px;
+            }
+    }
+}
+
+button {
+    border: 2px solid;
+    background-color: transparent;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+    transition: ease 0.3s;
+    outline:none;
+
+    &.btn-shadown-purple:hover {
+        border: #c501e2 2px solid;
+        box-shadow: #c501e2 0 0 17px;
+    }
+
+    &.btn-shadown-green:hover {
+        border: #2ef8a0 2px solid;
+        box-shadow: #2ef8a0 0 0 17px;
+    }
+
+    &.btn-shadown-red:hover {
+        border: #ff0534 2px solid;
+        box-shadow: #ff0534 0 0 17px;
+    }
+
+    &.btn-shadown-blue:hover {
+        border: #01c4e7 2px solid;
+        box-shadow: #01c4e7 0 0 17px;
+    }
+
+    &.btn-hover:hover::before {
+        left: 78%;
+    }
+
+    &.btn-hover:hover::after {
+        right: 78%;
+    }
+
+    &.btn-hover::after, &.btn-hover::before {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 10px;
+        transition: ease 0.3s;
+    }
+
+    &.btn-hover::before {
+        left: 20%;
+        bottom: -2px;
+    }
+
+    &.btn-hover::after {
+        right: 20%;
+        top: -2px; 
+    }
+}
 
 
 //  Mode
 
 .light {
 
-    span.bg {
-        background-color: $secondary-light;
-        color: $primary-light;
-        font-weight: 600;
+    button {
+        color: $secondary-light !important;
+
+        &.btn-hover::after, &.btn-hover::before {
+            background-color: $primary-light;
+        }
+    }
+
+    span {
+        &.bg {
+            background-color: $secondary-light;
+            color: $primary-light;
+            font-weight: 600;
+        }
+
+        &.underline {
+            text-decoration: underline $secondary-light !important;
+        }
     }
 
     background-color: $primary-light;
 
     .text-secondary {
         color: $secondary-light !important
-    }
-
-    .text-tertiary {
-        color: $tertiary-light !important
-    }
-    
-    .text-quaternary {
-        color: $quaternary-light !important
     }
 
     .bg-primary {
@@ -313,15 +454,8 @@ span {
         background-color: $secondary-light !important
     }
 
-    .bg-tertiary {
-        background-color: $tertiary-light !important
-    }
-    
-    .bg-quaternary {
-        background-color: $quaternary-light !important
-    }
-
     .navbar {
+        background-color: $primary-light;
         .logo p {
             color: $secondary-light;
         }
@@ -410,8 +544,7 @@ span {
         }
 
         span {
-            background-color: $primary-light;
-            color: $secondary-light;
+            background-color: rgba($primary-light, 0.1);
         }
 
         &:hover {
@@ -433,8 +566,16 @@ span {
             }
         }
     }
+
+    .cards {
+        .card {
+            &:hover {
+                box-shadow:$secondary-light -4px 4px 8px;
+            }
+        }
+    }
     
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 790px) {
         .navbar .list-nav {
             background-color: $primary-light;
             
@@ -447,10 +588,21 @@ span {
 
 .dark {
 
-    span.bg {
-        background-color: $secondary-dark;
-        color: $primary-dark;
-        font-weight: 600;
+    button {
+        color: $secondary-dark !important;
+
+        &.btn-hover::after, &.btn-hover::before {
+            background-color: $primary-dark;
+        }
+    }
+    background-color: $primary-dark;
+
+    span {
+        &.bg {
+            background-color: $secondary-dark;
+            color: $primary-dark;
+            font-weight: 600;
+        }
     }
 
     background-color: $primary-dark;
@@ -488,6 +640,7 @@ span {
     }
 
     .navbar {
+        background-color: $primary-dark;
         .logo p {
             color: $secondary-dark;
         }
@@ -520,7 +673,6 @@ span {
 
         .menu {
             color: $secondary-dark;
-
             svg path {
                 fill: $secondary-dark;
             }
@@ -559,8 +711,7 @@ span {
         color: $secondary-dark;
 
         span {
-            background-color: $primary-dark;
-            color: $secondary-dark;
+            background-color: rgba($primary-dark, 0.1);
         }
 
         &:hover {
@@ -571,8 +722,16 @@ span {
 
         }
     }
+
+    .cards {
+        .card {
+            &:hover {
+                box-shadow:$secondary-dark -4px 4px 8px;
+            }
+        }
+    }
     
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 790px) {
         .navbar .list-nav {
             background-color: $primary-dark;
             
@@ -620,12 +779,17 @@ span {
 }
 
 
-@media screen and (max-width: 750px) {    
+@media screen and (max-width: 790px) {    
+
+    button {
+        position: initial;
+    }
+
     .navbar {
         .menu {
             display: block;
         }
-
+        
         .list-nav {
             display: none;
             position: absolute;
@@ -635,8 +799,7 @@ span {
             height: calc(100vh - 60px);
             overflow-x: hidden;
             overflow-y: scroll;
-            transition: 0.3s all ease;
-
+            
             &::-webkit-scrollbar, &::-webkit-scrollbar-thumb {
                 width: 12px;
                 border-radius: 13px;
@@ -662,7 +825,44 @@ span {
         }
     }
 
+    .card-icons {
+        justify-content: start;
+    }
+
     .scroll-content {
         width: 96%;
+    }
+
+    .cards-image {
+        .card-image {
+            width: 180px;
+        }
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .cards .card {
+        width: 140px;
+        padding: 20px 10px;
+
+        i {
+            font-size: 2.3rem;
+        }
+
+        p {
+            font-size: 0.6rem;
+        }
+
+        &:hover {
+            p {
+                font-size: .7rem;
+            }
+        }
+    }
+
+    .cards-image {
+        .card-image {
+            width: 135px;
+        }
     }
 }
